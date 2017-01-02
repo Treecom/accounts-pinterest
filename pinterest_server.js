@@ -5,14 +5,14 @@ var querystring = Npm.require('querystring');
 
 OAuth.registerService('pinterest', 2, null, function(query) {
 	var response = getTokenResponse(query);
-	var accessToken = response.accessToken; 
+	var accessToken = response.accessToken;
 	var whitelisted = ['id', 'first_name', 'last_name'];
 	var identity = getIdentity(accessToken, whitelisted);
 	var serviceData = _.extend({
 		accessToken: accessToken,
 		expiresAt: (+new Date) + (1000 * 1000000000000000)
 	}, identity.data);
-	
+
 	return {
 		serviceData: serviceData,
 		options: {profile: {name: identity.data.first_name + ' ' + identity.data.last_name}}
@@ -27,7 +27,7 @@ var getTokenResponse = function (query) {
 	var config = ServiceConfiguration.configurations.findOne({service: 'pinterest'});
 	if (!config)
 		throw new ServiceConfiguration.ConfigError();
-	
+
 	var responseContent;
 	try {
 		// Request an access token
@@ -36,9 +36,9 @@ var getTokenResponse = function (query) {
 			{
 				headers: {"User-Agent": "Meteor/1.0"},
 				params: {
-					grant_type: 'authorization_code', 
-					client_id: config.clientId,  
-					redirect_uri: OAuth._redirectUri('pinterest', config), 
+					grant_type: 'authorization_code',
+					client_id: config.clientId,
+					redirect_uri: OAuth._redirectUri('pinterest', config),
 					client_secret: config.secret,
 					code: query.code,
 				}
@@ -48,11 +48,11 @@ var getTokenResponse = function (query) {
 		throw _.extend(new Error("Failed to complete OAuth handshake with Pinterest. " + err.message),
 									 {response: err.response});
 	}
-	
+
 	// Success!  Extract the pinterest access token and expiration
-	// time from the response     
+	// time from the response
 	var accessToken = responseContent.data.access_token;
-	
+
 	if (!accessToken) {
 		throw new Error("Failed to complete OAuth handshake with Pinterest " +
 										"-- can't find access token in HTTP response. " + responseContent);
@@ -78,4 +78,4 @@ var getIdentity = function (accessToken, fields) {
 
 Pinterest.retrieveCredential = function(credentialToken, credentialSecret) {
 	return OAuth.retrieveCredential(credentialToken, credentialSecret);
-};   
+};

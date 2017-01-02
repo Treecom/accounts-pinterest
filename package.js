@@ -1,10 +1,10 @@
 Package.describe({
-  name: 'accounts-pinterest',
+  name: 'treecom:accounts-pinterest',
   // Brief, one-line summary of the package.
   summary: 'Oauth login for Pinterest',
-  version: '1.0.0',
+  version: '1.0.1',
   // URL to the Git repository containing the source code for this package.
-  git: "https://github.com/tobe3/accounts-pinterest.git",
+  git: "https://github.com/Treecom/accounts-pinterest.git",
   // By default, Meteor will default to using README.md for documentation.
   // To avoid submitting documentation, set this field to null.
   documentation: 'README.md'
@@ -19,7 +19,6 @@ Package.onUse(function(api) {
   api.use('oauth', ['client', 'server']);
   api.use('oauth2', ['client', 'server']);
   api.use('http', ['server']);
-  api.use('templating', 'client');
   api.use('underscore', 'server');
   api.use('random', 'client');
   api.use('service-configuration', ['client', 'server']);
@@ -40,7 +39,6 @@ Package.onTest(function(api) {
   api.use('oauth', ['client', 'server']);
   api.use('oauth2', ['client', 'server']);
   api.use('http', ['server']);
-  api.use('templating', 'client');
   api.use('underscore', 'server');
   api.use('random', 'client');
   api.use('service-configuration', ['client', 'server']);
