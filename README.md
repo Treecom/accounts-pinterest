@@ -2,16 +2,16 @@
 
 ## Instalation
 
-```
+```bash
 meteor add treecom:accounts-pinterest
 ````
 
 ## Configuration
 
-Register your app on (pintrest)[https://developers.pinterest.com/apps/] and grab App ID and APP Secret for next config:
+Register your app on [pintrest](https://developers.pinterest.com/apps/) and grab App ID and APP Secret for next server side config:
 
 
-```
+```js
   Meteor.startup(function() {
     ServiceConfiguration.configurations.upsert({
       service: 'pinterest'
