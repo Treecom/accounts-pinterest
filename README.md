@@ -8,7 +8,7 @@ meteor add treecom:accounts-pinterest
 
 ## Configuration
 
-Register your app on [pintrest](https://developers.pinterest.com/apps/) and grab App ID and APP Secret for next server side config:
+Register your application on [pinterest](https://developers.pinterest.com/apps/) and grab App ID and APP Secret for next server side config:
 
 
 ```js

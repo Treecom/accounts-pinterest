@@ -4,18 +4,21 @@ var querystring = Npm.require('querystring');
 
 
 OAuth.registerService('pinterest', 2, null, function(query) {
+
+	var expiresAt =  new Date()
+	expiresAt.setFullYear(expiresAt.getFullYear() + 1);
+
 	var response = getTokenResponse(query);
 	var accessToken = response.accessToken;
-	var whitelisted = ['id', 'first_name', 'last_name'];
+	var whitelisted = ['id', 'first_name', 'last_name', 'scope'];
 	var identity = getIdentity(accessToken, whitelisted);
 	var serviceData = _.extend({
-		accessToken: accessToken,
-		expiresAt: (+new Date) + (1000 * 1000000000000000)
+		accessToken: accessToken
 	}, identity.data);
 
 	return {
 		serviceData: serviceData,
-		options: {profile: {name: identity.data.first_name + ' ' + identity.data.last_name}}
+		options: { profile: {name: identity.data.first_name + ' ' + identity.data.last_name} }
 	};
 });
 
@@ -32,15 +35,15 @@ var getTokenResponse = function (query) {
 	try {
 		// Request an access token
 		responseContent = HTTP.post(
-			"https://api.pinterest.com/v1/oauth/token?",
+			"https://api.pinterest.com/v1/oauth/token",
 			{
 				headers: {"User-Agent": "Meteor/1.0"},
 				params: {
 					grant_type: 'authorization_code',
 					client_id: config.clientId,
 					redirect_uri: OAuth._redirectUri('pinterest', config),
-					client_secret: config.secret,
-					code: query.code,
+					client_secret: OAuth.openSecret(config.secret),
+					code: query.code
 				}
 			}
 		);
@@ -59,7 +62,7 @@ var getTokenResponse = function (query) {
 	}
 
 	return {
-		accessToken: accessToken,
+		accessToken: accessToken
 	};
 };
 
