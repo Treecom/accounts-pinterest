@@ -1,0 +1,26 @@
+{
+  "name": "accounts-pinterest",
+  "version": "1.0.3",
+  "description": "Oauth login for Pinterest",
+  "main": "package.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Treecom/accounts-pinterest.git"
+  },
+  "keywords": [
+    "pinterest",
+    "accounts",
+    "meteor",
+    "login",
+    "oauth"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Treecom/accounts-pinterest/issues"
+  },
+  "homepage": "https://github.com/Treecom/accounts-pinterest#readme"
+}
