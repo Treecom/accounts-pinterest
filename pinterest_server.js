@@ -8,7 +8,7 @@ OAuth.registerService('pinterest', 2, null, function(query) {
 	var expiresAt =  new Date()
 	expiresAt.setFullYear(expiresAt.getFullYear() + 1);
 
-	console.log('query', query);
+	// console.log('query', query);
 
 	var response = getTokenResponse(query);
 	var accessToken = response.accessToken;
@@ -18,8 +18,8 @@ OAuth.registerService('pinterest', 2, null, function(query) {
 		accessToken: accessToken
 	}, identity.data);
 
-	console.log('identity', identity);
-	console.log('serviceData', serviceData);
+	// console.log('identity', identity);
+	// console.log('serviceData', serviceData);
 
 	return {
 		serviceData: serviceData,
@@ -57,7 +57,7 @@ var getTokenResponse = function (query) {
 									 {response: err.response});
 	}
 
-	console.log('responseContent', responseContent);
+	// console.log('responseContent', responseContent);
 
 	// Success!  Extract the pinterest access token and expiration
 	// time from the response
@@ -75,7 +75,7 @@ var getTokenResponse = function (query) {
 
 var getIdentity = function (accessToken, fields) {
 	try {
-		console.log('accessToken request GET', accessToken);
+		// console.log('accessToken request GET', accessToken);
 		return HTTP.get("https://api.pinterest.com/v1/me", {
 			params: {
 				access_token: accessToken,

@@ -2,7 +2,7 @@ Package.describe({
   name: 'treecom:accounts-pinterest',
   // Brief, one-line summary of the package.
   summary: 'Oauth login for Pinterest',
-  version: '1.0.2',
+  version: '1.0.3',
   // URL to the Git repository containing the source code for this package.
   git: "https://github.com/Treecom/accounts-pinterest.git",
   // By default, Meteor will default to using README.md for documentation.
