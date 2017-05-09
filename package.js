@@ -11,17 +11,17 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.use('accounts-base@1.2.14', ['client', 'server']);
+  api.use('accounts-base', ['client', 'server']);
   api.imply('accounts-base', ['client', 'server']);
-  api.use('accounts-oauth@1.1.15', ['client', 'server']);
+  api.use('accounts-oauth', ['client', 'server']);
   api.imply('accounts-oauth', ['client', 'server']);
 
-  api.use('oauth@1.1.12', ['client', 'server']);
-  api.use('oauth2@1.1.11', ['client', 'server']);
-  api.use('http@1.2.10', ['server']);
-  api.use('underscore@1.0.10', 'server');
-  api.use('random@1.0.10', 'client');
-  api.use('service-configuration@1.0.11', ['client', 'server']);
+  api.use('oauth', ['client', 'server']);
+  api.use('oauth2', ['client', 'server']);
+  api.use('http', ['server']);
+  api.use('underscore', 'server');
+  api.use('random', 'client');
+  api.use('service-configuration', ['client', 'server']);
 
   api.add_files('pinterest_client.js', 'client');
   api.add_files('pinterest_server.js', 'server');
